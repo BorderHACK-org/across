@@ -1,0 +1,63 @@
+{% extends "base.django.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block css %}
+.list-group-horizontal .list-group-item {
+    display: inline-block;
+}
+.list-group-horizontal .list-group-item {
+    margin-bottom: 0;
+    margin-left:-4px;
+    margin-right: 0;
+}
+.list-group-horizontal .list-group-item:first-child {
+    border-top-right-radius:0;
+    border-bottom-left-radius:4px;
+}
+.list-group-horizontal .list-group-item:last-child {
+    border-top-right-radius:4px;
+    border-bottom-left-radius:0;
+}
+{% endblock %}
+
+{% block content %}
+<h1>Requests</h1>
+<ul class="list-unstyled">
+{% for request in object_list %}
+<li>
+ <dl class="list-group list-inline">
+    <dt class="list-group-item list-group-item-info">Posted on</dt>
+    <dd class="list-group-item">{{ request.created|date }}</dd>
+    <dt class="list-group-item list-group-item-info">From language</dt>
+    <dd class="list-group-item">{{ request.from_lang }}</dd>
+    <dt class="list-group-item list-group-item-info">To language</dt>
+    <dd class="list-group-item">{{ request.to_lang }}</dd>
+    <dt class="list-group-item list-group-item-info">Organization name</dt>
+    <dd class="list-group-item">{{ request.organization_name }}</dd>
+    <dt class="list-group-item list-group-item-info">Message</dt>
+    <dd class="list-group-item">{{ request.message }}</dd>
+
+
+    <dt class="list-group-item list-group-item-info">Contact details</dt>
+    <dd class="list-group-item list-group-horizontal">
+        <dl class="list-group list-inline">
+        <dt class="list-group-item list-group-item-info">Homepage</dt>
+        <dd class="list-group-item">{{ request.homepage|default:'-' }}</dd>
+        <dt class="list-group-item list-group-item-info">e-mail</dt>
+        <dd class="list-group-item">{{ request.email|default:'-' }}</dd>
+        <dt class="list-group-item list-group-item-info">Facebook</dt>
+        <dd class="list-group-item">{{ request.facebook|default:'-' }}</dd>
+        <dt class="list-group-item list-group-item-info">Phone number</dt>
+        <dd class="list-group-item">{{ request.phone_number|default:'-' }}</dd>
+        <dt class="list-group-item list-group-item-info">Skype handle</dt>
+        <dd class="list-group-item">{{ request.skype_handle|default:'-' }}</dd>
+        </dl>
+    </dd>
+</dl> 
+</li>
+{% empty %}
+    <li>No translation requests matching your chosen languages.</li>
+{% endfor %}
+</ul>
+{% endblock %}

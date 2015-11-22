@@ -1,0 +1,12 @@
+{% extends "base.django.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% block content %}
+<form action="" method="post" class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">{% bootstrap_icon "globe" %} Post</button>
+  {% endbuttons %}
+</form>
+{% endblock %}

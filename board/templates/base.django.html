@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>{% block title %}{{ _("Across") }}{% endblock %}</title>
+  <!-- Mobile viewport optimized: h5bp.com/viewport -->
+  <meta name="viewport" content="width=device-width">
+  <link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}/favicon.ico"/>
+  {% block vendor_css %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  {% endblock %}
+
+  <style>
+  {% block css %}{% endblock %}
+  </style>
+
+  {% block vendor_js %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  {% endblock %}
+
+</head>
+
+<body>
+ {% block body %}
+ {% block navbar %}
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+        aX
+        </a>
+
+        <ul class="nav navbar-nav">
+
+        <li>
+          <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <a href="/list" class="btn btn-default">See a list of all translation requests</a>
+            <a href="/list" class="btn btn-default">Create a new request</a>
+          </div>
+          </form>
+          </ul>
+        </li>
+
+      </div>
+    </div>
+  </nav>
+  {% endblock %}
+  <div class="container" role="main">
+    {% block content %}{% endblock %}
+  </div>
+
+  {% block js %}{% endblock js %}
+  {% endblock %}
+</body>
+
+</html>

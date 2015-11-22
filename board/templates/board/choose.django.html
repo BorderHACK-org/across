@@ -1,0 +1,12 @@
+{% extends "base.django.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% block content %}
+{% url 'request_list' as request_list %}
+<form action="{{ request_list }} method="get" class="form">
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  {% endbuttons %}
+</form>
+{% endblock %}

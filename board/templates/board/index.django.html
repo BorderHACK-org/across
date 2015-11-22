@@ -1,0 +1,35 @@
+{% extends "base.django.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% block navbar %}{% endblock %}
+{% block css %}
+
+html, body, #index-wrapper {
+   margin: 0;
+   padding: 0;
+   height: 100%; 
+   width: 100%;
+}
+
+#index-wrapper {
+    padding-top:10%;
+}
+
+{% endblock %}
+{% block body %}
+{% url 'choose_language' as choose_language %}
+{% url 'request_create' as request_create %}
+<div class="jumbotron" id="index-wrapper">
+<div class="container">
+    <h1>aX</h1>
+    <p>
+    asdfasdkfjja asldf jalsdf alsd flasd
+    </p>
+    <p>
+        {% bootstrap_button "I want to be a language helper" button_type="submit" href=choose_language %}
+        {% bootstrap_button "I need a language helper" button_type="submit" href=request_create %}
+    </p>
+</div>
+</div>
+
+{% endblock %}
